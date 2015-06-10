@@ -19,13 +19,13 @@ $(document).ready(function(e) {
 		//alert('Encabezado ' + encabezado);
 	});//btnjugar-click
 	
-	$('.cuadro').on('vmousedown',function(){
-		$(this).addClass('pulsado');
-	});
+	//$('.cuadro').on('vmousedown',function(){
+		//$(this).addClass('pulsado');
+	//});
 	
-	$('.cuadro').on('vmouseup',function(){
-		$(this).removeClass('pulsado');
-	});
+	//$('.cuadro').on('vmouseup',function(){
+		//$(this).removeClass('pulsado');
+	//});
 	
 	function quien(q)
 	{
@@ -49,11 +49,16 @@ $(document).ready(function(e) {
 	$('#btnguardar').on('tap',function(){
 		var nuevonombre=$('#txtnombre').val();
 		basedatos.transaction(function(consulta){
-			consulta.executeSql ("UPDATE Ususario SET NombreUsuario=? 
+			consulta.executeSql ("UPDATE Usuario SET NombreUsuario=? 
 			WHERE ClaveUsuario='1';".[nuevonombre]);
 			
 			)};
 			cargarnombrejugador();
+			
 	});
+	
+	$('.cuadro').on('tap',function(){
+		flash ($(this));
+		audio.play($(this).attr('id'));
 //}); 
 });
